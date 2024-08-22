@@ -8,12 +8,6 @@ import (
 	"net/http"
 )
 
-// Add Weighted round robin implementation [X]
-// Add sticky round robin [X]
-// Check unhealthy servers edge case{
-// + Sticky round robin doesnt work well when one or multiple servers are down}
-// Create the cli API
-
 func isValidURL(u string) bool {
 	parsedURL, err := url.Parse(u)
 	if err != nil {
@@ -57,7 +51,10 @@ func main() {
 		fmt.Scanln(&url)
 		if url == "d" {
 			doneFlag = true
+			break
 		}
+		fmt.Println(doneFlag)
+
 		for !isValidURL(url) {
 			fmt.Println("Wrong format. Try again: ")
 			fmt.Scanln(&url)
@@ -80,7 +77,7 @@ func main() {
 	}
 
 
-
+	// Could use these server urls after running sample servers
 	// serverUrls := []string{
 	// 	"http://localhost:8081",
 	// 	"http://localhost:8082",
@@ -94,6 +91,6 @@ func main() {
 	http.Handle("/", lb)
 	fmt.Println("Load Balancer started at: 8080")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
-		log.Fatalf("Failed to start server: %v", err)
+		log.Fatalf("Failed to start load balancer: %v", err)
 	}
 }

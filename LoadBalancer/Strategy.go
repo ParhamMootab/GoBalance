@@ -52,7 +52,11 @@ func (lb *LoadBalancer) HealthCheck() {
 
 func NewLoadBalancer(serverUrls []string, healthCheckInterval int, weights []int, strategyType int) *LoadBalancer {
 	var servers []*ServerPkg.Server
-
+	if weights == nil{
+		for range serverUrls{
+			weights = append(weights, 1)
+		}
+	}
 	for index, serverUrl := range serverUrls {
 		url, err := url.Parse(serverUrl)
 		if err != nil {
