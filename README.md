@@ -78,11 +78,20 @@ GoBalance will start listening on port 8080, distributing incoming traffic based
   Enter the health check interval in seconds: 10
   
   Load Balancer started at: 8080
-
+```
 
 ### Project Structure
+- main.go: The entry point of the application, where the CLI is implemented.
+- LoadBalancer/: Contains the core logic for the load balancer, including different load balancing strategies and health checks.
+- Server/: Manages the server object and reverse proxy setup.
 
+### Why GoBalance?
+This project is a testament to my skills in:
 
+- Go Programming: Leveraging Go's concurrency model and standard library to build performant and reliable systems.
+- Distributed Systems: Understanding of load balancing strategies, fault tolerance, and high availability.
+- CLI Development: Building user-friendly command-line tools to configure and manage complex systems.
    
-   
+### Contributing
+Contributions are welcome! If you have ideas for new features or improvements, feel free to fork the repository and submit a pull request.   
 
